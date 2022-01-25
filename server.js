@@ -1,9 +1,12 @@
 const http = require('http')
 const fs = require('fs')
+const moment = require('moment')
+
 const port = 3000;
 const hostname = 'localhost'
 
-
+const christnas = '2022-12-25'
+console.log(moment(christnas).format('LL'))
 
 const sercer = http.createServer((req,res) => {
     let route = "./view/"
@@ -14,12 +17,19 @@ const sercer = http.createServer((req,res) => {
     switch(req.url){
         case '/':
             route+= 'index.html';
+            res.statusCode = 200
             break;
         case '/contact':
             route += 'contact.html';
+            res.statusCode = 200
+            break;
+        case '/contact-us':
+            route += 'contact.html';
+            res.statusCode = 200
             break;
         default:
             route += '404.html';
+            res.statusCode = 404
             break;
     }
     
